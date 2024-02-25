@@ -4,13 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use App\Models\Product;   
+use App\Repository\Eloquent\UserRepository;
+use App\Repository\UserRepositoryInterface;
+
+
 
 class ProductController extends Controller
 {
-    public function index(){
-        $products = Product::all();
-        return view('products.index', ['products' => $products]);
+    // public function __construct(
+    //     protected UserRepository $products,
+    // ){}
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
     }
+
+    public function index()
+    {
+        $products = $this->userRepository->all();
+
+        return view('products.index', [
+            'products' => $products
+        ]);
+    }
+
+    // public function index(){
+    //     $products = Product::all();
+        // $products = $this->products->all();
+    //     return view('products.index', ['products' => $products]);
+    // }
     public function create(){
         return view('products.create');
     }
@@ -27,6 +51,7 @@ class ProductController extends Controller
         // dd($request);
 
         $newProduct = Product::create($data);
+        // $newProduct = $this->products->create($data);
         return redirect(route('product.index'));
         // // return redirect(route('product.index'));
     }
