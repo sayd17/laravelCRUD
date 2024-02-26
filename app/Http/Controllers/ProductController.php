@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use App\Models\Product;   
-use App\Repository\Eloquent\UserRepository;
+// use App\Repository\Eloquent\UserRepository;
 use App\Repository\UserRepositoryInterface;
-
 
 
 class ProductController extends Controller
@@ -16,7 +15,7 @@ class ProductController extends Controller
     // ){}
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }
