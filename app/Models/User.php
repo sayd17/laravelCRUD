@@ -43,13 +43,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function profile(){
-        $this->hasOne(Profile::class);
+    // public function profile(){
+    //     $this->hasOne(Profile::class);
 
-    }
+    // }
 
     public function post(){
-        $this->hasMany(Post::class);
+        $this->hasMany(Post::class, 'user_id');
 
     }
 
