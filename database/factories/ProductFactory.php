@@ -26,7 +26,7 @@ class ProductFactory extends Factory
             'name' => fake()->name(),
             'qty' => $rand,
             'price' => $rand,
-            'description' => $fake()->paragraph(),
+            'description' => fake()->paragraph(),
         ];
     }
 }
