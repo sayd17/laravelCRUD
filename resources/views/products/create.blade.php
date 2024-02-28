@@ -23,6 +23,11 @@
         @method('post')
         
         <div>
+            <label>user_id</label>
+            <input type="text" name="user_id" placeholder="user_id" />
+        </div>
+        
+        <div>
             <label>name</label>
             <input type="text" name="name" placeholder="Name" />
         </div>

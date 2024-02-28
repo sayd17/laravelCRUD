@@ -16,8 +16,10 @@ class ProductController extends Controller
     private $userRepository;
 
     public function __construct(UserRepositoryInterface $userRepository)
-    {
+    {   
+        
         $this->userRepository = $userRepository;
+        
     }
 
     public function index()
@@ -41,6 +43,7 @@ class ProductController extends Controller
 
         // dd($request);
         $data = $request->validate([
+            'user_id' => 'nullable',
             'name' => 'required',
             'qty' => 'required|numeric',
             'price' => 'required|decimal:0,2',

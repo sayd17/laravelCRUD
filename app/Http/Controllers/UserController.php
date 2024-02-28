@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
+use App\Models\User;
+
 use Illuminate\Http\Request;
-use App\Services\UserService;
 
 class UserController extends Controller
 {
-    public function __construct(UserService $userService)
+    /**
+     * Show a list of all of the application's users.
+     */
+    
+    public function index(): View
     {
-        $this->userService = $userService;
-    }
-
-    public function store(Request $request)
-    {
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        $this->userService->createUser($name, $email, $password);
-
-        return redirect()->route('users.index');
+        $users = DB::table('users')->get();
+ 
+        return view('users.index', ['users' => $users]);
     }
 }
+
+?>
