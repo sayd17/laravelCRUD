@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Collection;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
@@ -16,8 +17,17 @@ class CustomerFactory extends Factory
      */
     public function definition(): array
     {
+        $collection = collect(['I', 'B']);
+        $type = $collection->random();
         return [
-            //
+
+            'name' => fake()->name(),
+            'type' => $type,
+            'email' => fake()->unique()->safeEmail(),
+            'address' => fake()->title(),
+            'city' => fake()->title(),
+            'state' => fake()->title(),
+            'postal_code' => fake()->title(),
         ];
     }
 }
