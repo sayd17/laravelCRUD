@@ -25,9 +25,9 @@ class CustomerFactory extends Factory
             'type' => $type,
             'email' => fake()->unique()->safeEmail(),
             'address' => fake()->title(),
-            'city' => fake()->title(),
-            'state' => fake()->title(),
-            'postal_code' => fake()->title(),
+            'city' => $this->faker->city(),
+            'state' => $this->faker->state(),
+            'postal_code' => $this->faker->postCode(),
         ];
     }
 }
