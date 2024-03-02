@@ -12,7 +12,7 @@ class CustomerQuery{
         'address' => ['eq'],
         'city' => ['eq'],
         'state' => ['eq'],
-        'postal_code' => ['eq', 'gt', 'lt']
+        'postalCode' => ['eq', 'gt', 'lt']
     ];
 
     protected $columnMap = [
@@ -29,18 +29,19 @@ class CustomerQuery{
 
     public function transform(Request $request){
         $eloQuery = [];
-
+        // dd($request); ['type' => ['eq' => 'I]]
         foreach($this->safeParms as $parm => $operators) {
-            $query = $request->query($parm);
-
+            $query = $request->query($parm); // $parm = 'type'
             if (!isset($query)){
                 continue;
             }
-            // echo $query;
+            // echo $query; // ['eq' => 'I']
             $column = $this->columnMap[$parm] ?? $parm;
-
+            // echo $column; // type
             foreach($operators as $operator){
+                // echo $operator; // eq
                 if(isset($query[$operator])) {
+                    // echo $query[$operator]; I
                     $eloQuery[] = [$column, $this->operatorMap[$operator], $query[$operator]];
                 }
             }
