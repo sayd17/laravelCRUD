@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Services\V1\CustomerQuery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class CustomerController extends Controller
 {
@@ -34,7 +35,9 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        $response = Http::get('https://google.com');
+        
+        return $response;
     }
 
     /**

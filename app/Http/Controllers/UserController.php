@@ -35,6 +35,12 @@ class UserController extends Controller
  
         return view('users.index', ['users' => $users]);
     }
+
+    public function user_activity_log(): View
+    {
+        $activityLog = DB::table('user_activity_logs')->get();
+        return view(users.user_activity_log, compact('activityLog'));
+    }
 }
 
 ?>

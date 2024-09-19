@@ -16,13 +16,16 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return ['message' => "Api is working fine."];
+    // return view('welcome');
 });
 
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
+// Route::get('/userActivityLog', [UserController::class, 'user_activity_log'])->name('user.user_activity_log');
 
 Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::get('/product/activityLog', [ProductController::class, 'activityLog'])->name('product.activityLog');
 Route::post('/product', [ProductController::class, 'store'])->name('product.store');
 Route::get('/product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::put('/product/{product}/update', [ProductController::class, 'update'])->name('product.update');

@@ -39,6 +39,12 @@ class ProductController extends Controller
     public function create(){
         return view('products.create');
     }
+    
+    public function activityLog(){
+        $activityLog = DB::table('product_activity_logs')->get();
+        return view(products.product_activity_log, compact('activityLog'));
+    }
+
     public function store(Request $request){
 
         // dd($request);
